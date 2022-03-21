@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Homework_11._6___OOP
 {
-    public class Client
+    public class Client 
     {
         private string name;
         private string surname;
@@ -22,5 +23,6 @@ namespace Homework_11._6___OOP
         public uint Phonenumber { get => phonenumber; set => phonenumber = value; }
         public int PassportSeries { get => passportSeries; set => passportSeries = value; }
         public int PassportNumber { get => passportNumber; set => passportNumber = value; }
+
     }
 }

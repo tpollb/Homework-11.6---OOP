@@ -5,13 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Collections;
+using System.Windows;
 
 namespace Homework_11._6___OOP
 {
     public class Consultant
     {
-        DB dataBase = new DB();
-        List<Client> clients = new List<Client>();
+        private DB dataBase = new DB();
+        private List<Client> clients = new List<Client>();
         private Client client = new Client();
 
         public Client Client { get => client; set => client = value; }
@@ -35,9 +37,9 @@ namespace Homework_11._6___OOP
                         Client.Phonenumber = (uint)(double)reader["phonenumber"];
                         Client.PassportSeries = (int)reader["passportseries"];
                         Client.PassportNumber = (int)reader["passportnumber"];
-                        //Clients.Add(Client);
 
-                        Globals.Clientslist.Add(Client);
+                        Clients.Add(Client);
+                        MessageBox.Show($"{Client.Name}");
                     }
                 }
             }

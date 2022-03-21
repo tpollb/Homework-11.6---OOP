@@ -28,12 +28,11 @@ namespace Homework_11._6___OOP
 
             Consultant user = new Consultant();
             user.LoadData();
-            DataGrid1.ItemsSource = Globals.Clientslist;
-           
+            DataGrid1.ItemsSource = user.Clients;
         }
 
         /*
-        public void LoadData()
+        public void LoadData1()
         {
             string queryString = $"SELECT * FROM Clients_Table";
 
