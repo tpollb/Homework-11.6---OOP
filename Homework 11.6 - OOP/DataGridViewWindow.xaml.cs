@@ -22,42 +22,24 @@ namespace Homework_11._6___OOP
     /// </summary>
     public partial class DataGridViewWindow : Window
     {
+
         public DataGridViewWindow()
         {
             InitializeComponent();
 
+            MessageBox.Show($"{Globals.UserName}");
+
             Consultant user = new Consultant();
+
+            if (Globals.UserName == "Manager")
+            {
+                user = new Manager();
+            }
+
             user.LoadData();
+
+            DataGrid1.Items.Clear();
             DataGrid1.ItemsSource = user.Clients;
         }
-
-        /*
-        public void LoadData1()
-        {
-            string queryString = $"SELECT * FROM Clients_Table";
-
-            dataBase.openConnection();
-
-            using (SqlCommand command = new SqlCommand(queryString, dataBase.getConnection()))
-            {
-                using (SqlDataReader reader = command.ExecuteReader())
-                {   
-                    while (reader.Read())
-                    {
-                        client.Name = (string)reader["name"];
-                        client.Surname = (string)reader["surname"];
-                        client.Middlename = (string)reader["middlename"];
-                        client.Phonenumber = (uint)(double)reader["phonenumber"];
-                        client.PassportSeries = (int)reader["passportseries"];
-                        client.PassportNumber = (int)reader["passportnumber"];
-
-                        clients.Add(client);
-                    }
-                }
-            }
-            Globals.Clientslist = clients;
-            DataGrid1.ItemsSource = Globals.Clientslist;
-        }
-        */
     } 
 }

@@ -14,13 +14,11 @@ namespace Homework_11._6___OOP
     {
         private DB dataBase = new DB();
         private List<Client> clients = new List<Client>();
-        private Client client = new Client();
 
-        public Client Client { get => client; set => client = value; }
         public List<Client> Clients { get => clients; set => clients = value; }
         public DB DataBase { get => dataBase; set => dataBase = value; }
 
-        public void LoadData()
+        public virtual void LoadData()
         {
             DataBase.openConnection();
             string queryString = $"SELECT * FROM Clients_Table";
@@ -31,19 +29,19 @@ namespace Homework_11._6___OOP
                 {
                     while (reader.Read())
                     {
-                        Client.Name = (string)reader["name"];
-                        Client.Surname = (string)reader["surname"];
-                        Client.Middlename = (string)reader["middlename"];
-                        Client.Phonenumber = (uint)(double)reader["phonenumber"];
-                        Client.PassportSeries = (int)reader["passportseries"];
-                        Client.PassportNumber = (int)reader["passportnumber"];
-
-                        Clients.Add(Client);
-                        MessageBox.Show($"{Client.Name}");
+                        Clients.Add(new Client
+                        {
+                            Name = (string)reader["name"],
+                            Surname = (string)reader["surname"],
+                            Middlename = (string)reader["middlename"],
+                            Phonenumber = (uint)(double)reader["phonenumber"],
+                            PassportSeries = 0,
+                            PassportNumber = 0
+                        });
                     }
                 }
             }
-            //return Clients;
+            DataBase.closeConnection();
         }
     }
 }

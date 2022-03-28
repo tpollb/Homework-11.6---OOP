@@ -20,7 +20,7 @@ namespace Homework_11._6___OOP
     /// </summary>
     public partial class MainWindow : Window
     {
-        readonly DataGridViewWindow w = new DataGridViewWindow();
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -29,7 +29,8 @@ namespace Homework_11._6___OOP
         public void Selec_User_Button_Click(object sender, RoutedEventArgs e)
         {
             Globals.UserName = user_list_ComboBox.Text;
-
+            DataGridViewWindow w = new DataGridViewWindow();
+            
             w.Show();
             this.Close();   
         }
